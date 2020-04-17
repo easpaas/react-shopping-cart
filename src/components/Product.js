@@ -1,7 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
 
-import { ProductContext } from '../contexts/product';
 
 const Product = ({product, addItem}) => {
 	return (
