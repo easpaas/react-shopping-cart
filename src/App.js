@@ -14,31 +14,32 @@ function App() {
 	const [products] = useState(data);
 	const [cart, setCart] = useState([]);
 
+	// keeps existing cart state and 
+	// adds the new item to the cart
 	const addItem = item => {
-		// add the given item to the cart
+		console.log(item)
 		setCart([...cart, item])
+		// TODO - duplicate items can only be added
+		// if product inventory is greater than 2
+		
+		// TODO - decrease product inventory (quantity)
 	};
 
 	return (
+		// [name]Context.Provider value => inital context state
 		<div className="App">
-			<CartContext.Provider 
-				value={{cart}}
-			>
+			<CartContext.Provider value={{cart}}>
 				<Navigation cart={cart} />
 			</CartContext.Provider>
 
 			{/* Routes */}
-			<ProductContext.Provider 
-				value={{products, addItem}}
-			>
+			<ProductContext.Provider value={{products, addItem}}>
 				<Route exact path="/">
 					<Products />
 				</Route>
 			</ProductContext.Provider>
 
-			<CartContext.Provider 
-				value={{cart}}
-			>
+			<CartContext.Provider value={{cart}}>
 				<Route path="/cart">
 					<ShoppingCart />
 				</Route>
